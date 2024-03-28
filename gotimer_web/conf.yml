@@ -1,0 +1,6 @@
+mysql:
+  dsn: root:123456@tcp(localhost:3306)/gotimer?charset=utf8mb4&parseTime=true
+
+redis:
+  address: localhost:6379
+  password:
