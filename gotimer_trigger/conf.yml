@@ -17,7 +17,7 @@
 #   timerDetailCacheMinutes: 2
 mysql:
   ### 必填
-  dsn: root:123456@tcp(localhost:3306)/gotimer?charset=utf8mb4&parseTime=true
+  dsn: root:123456@tcp(10.9.130.50:3306)/gotimer?charset=utf8mb4&parseTime=true
   # maxOpenConns: 100
   # maxIdleConns: 50
 # pool:
@@ -26,13 +26,13 @@ mysql:
 #   nonBlocking: false
 
 redis:
-  # network: tcp 
+  # network: tcp
   ## 必填
-  address: localhost:6379
-  ##address: 10.11.33.61:6379
+  address: 10.9.130.50:6379
+  #address: 127.0.0.1:6379
   password:
   # maxIdle: 2000
   # idleTimeout: 10
   # maxActive: 5000
   # wait: true
-url: pulsar://localhost:6650
+url: pulsar://10.9.130.50:6650

@@ -28,11 +28,11 @@ mysql:
 redis:
   # network: tcp 
   ## 必填
-  #address: 10.9.130.50:6379
-  address: 127.0.0.1:6379
+  address: 10.9.130.50:6379
+  #address: 127.0.0.1:6379
   password:
   # maxIdle: 2000
   # idleTimeout: 10
   # maxActive: 5000
   # wait: true
-url: pulsar://localhost:6650
+url: pulsar://10.9.130.50:6650
