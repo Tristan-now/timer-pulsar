@@ -35,3 +35,5 @@ redis:
   # idleTimeout: 10
   # maxActive: 5000
   # wait: true
+pulsar:
+  url: pulsar://localhost:6650
