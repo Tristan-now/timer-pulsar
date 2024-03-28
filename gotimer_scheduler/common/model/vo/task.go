@@ -3,7 +3,7 @@ package vo
 import (
 	"time"
 
-	"github.com/xiaoxuxiansheng/xtimer/common/model/po"
+	"gotimer_scheduler/common/model/po"
 )
 
 type GetTasksReq struct {

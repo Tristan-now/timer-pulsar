@@ -18,7 +18,7 @@ type PulsarConfig struct {
 }
 
 func GetPulsarClient() *PulsarClient {
-	configFile, err := os.ReadFile("conf.yml")
+	configFile, err := os.ReadFile("../conf.yml")
 	if err != nil {
 		log.Fatalf("Unable to read config file: %v", err)
 	}
@@ -38,7 +38,6 @@ func GetPulsarClient() *PulsarClient {
 		OperationTimeout:  30 * time.Second,
 		ConnectionTimeout: 30 * time.Second,
 	})
-
 
 	if err != nil {
 		log.Fatalf("Could not instantiate Pulsar client: %v", err)

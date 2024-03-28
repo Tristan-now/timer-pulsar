@@ -3,9 +3,9 @@ package timer
 import (
 	"context"
 
-	"github.com/xiaoxuxiansheng/xtimer/common/model/po"
-	"github.com/xiaoxuxiansheng/xtimer/pkg/log"
-	"github.com/xiaoxuxiansheng/xtimer/pkg/mysql"
+	"gotimer_trigger/common/model/po"
+	"gotimer_trigger/pkg/log"
+	"gotimer_trigger/pkg/mysql"
 
 	"gorm.io/gorm"
 )

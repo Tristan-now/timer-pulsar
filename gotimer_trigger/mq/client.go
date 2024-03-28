@@ -13,13 +13,12 @@ type PulsarClient struct {
 	Client pulsar.Client
 }
 
-
 type PulsarConfig struct {
 	URL string `yaml:"url"`
 }
 
 func GetPulsarClient() *PulsarClient {
-	configFile, err := os.ReadFile("conf.yml")
+	configFile, err := os.ReadFile("../conf.yml")
 	if err != nil {
 		log.Fatalf("Unable to read config file: %v", err)
 	}

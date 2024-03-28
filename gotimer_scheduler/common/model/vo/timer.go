@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/xiaoxuxiansheng/xtimer/common/consts"
-	"github.com/xiaoxuxiansheng/xtimer/common/model/po"
+	"gotimer_scheduler/common/consts"
+	"gotimer_scheduler/common/model/po"
 )
 
 type GetAppTimersReq struct {

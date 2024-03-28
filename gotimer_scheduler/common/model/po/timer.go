@@ -3,7 +3,7 @@ package po
 import (
 	"time"
 
-	"github.com/xiaoxuxiansheng/xtimer/common/consts"
+	"gotimer_scheduler/common/consts"
 
 	"gorm.io/gorm"
 )

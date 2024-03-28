@@ -4,8 +4,8 @@ import (
 	"context"
 	"math"
 
-	"github.com/xiaoxuxiansheng/xtimer/pkg/hash"
-	"github.com/xiaoxuxiansheng/xtimer/pkg/redis"
+	"gotimer_scheduler/pkg/hash"
+	"gotimer_scheduler/pkg/redis"
 )
 
 // m：二进制向量的长度； 基于 redis 实现，单个 bitMap 取 string 的最大长度 512M，共有 2^32 个 bit，故 m = 2^32
