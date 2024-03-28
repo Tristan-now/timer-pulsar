@@ -15,6 +15,7 @@ RUN go build -o main
 
 
 FROM ubuntu:22.04
+EXPOSE 8092
 WORKDIR /app
 COPY --from=builder /build/main /app
 COPY --from=builder /build/conf.yml /app
