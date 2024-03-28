@@ -1,0 +1,33 @@
+2024-03-27T16:03:52.518+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 1
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 3
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 3
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 3
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 3
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 3
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 2
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 3
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 2
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 3
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 4
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 3
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 4
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 3
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 3
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 2
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 2
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 3
+2024-03-27T19:34:20.141+0800	ERROR	gotimer_executor/main.go:141	trigger failed,get timer failed, id: 2, err: record not found
+2024-03-27T19:34:20.140+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 2
+2024-03-27T19:34:20.143+0800	ERROR	gotimer_executor/main.go:141	trigger failed,get timer failed, id: 2, err: record not found
+2024-03-27T19:34:20.143+0800	ERROR	gotimer_executor/main.go:141	trigger failed,get timer failed, id: 2, err: record not found
+2024-03-27T19:34:20.143+0800	ERROR	gotimer_executor/main.go:141	trigger failed,get timer failed, id: 2, err: record not found
+2024-03-27T19:34:20.143+0800	ERROR	gotimer_executor/main.go:141	trigger failed,get timer failed, id: 2, err: record not found
+2024-03-27T19:36:00.092+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 4
+2024-03-27T19:38:25.107+0800	WARN	executor/worker.go:70	bloom filter check failed, start to check db, bloom key: task_bloom_2024-03-27, timerIDUnixKey: 4_1711539360000, err: <nil>, exist: true
+2024-03-27T19:38:25.107+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 4
+2024-03-27T19:38:25.107+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 4
+2024-03-27T19:38:25.108+0800	WARN	executor/worker.go:75	task is already executed, timerID: 4, exec_time: 2024-03-27 11:36:00 +0000 UTC
+2024-03-27T19:39:00.074+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 4
+2024-03-27T20:55:18.882+0800	WARN	executor/worker.go:70	bloom filter check failed, start to check db, bloom key: task_bloom_2024-03-27, timerIDUnixKey: 4_1711539540000, err: <nil>, exist: true
+2024-03-27T20:55:18.883+0800	WARN	executor/worker.go:75	task is already executed, timerID: 4, exec_time: 2024-03-27 11:39:00 +0000 UTC
+2024-03-27T20:56:00.012+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 4
