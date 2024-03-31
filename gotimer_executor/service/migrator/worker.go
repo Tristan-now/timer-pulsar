@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	mconf "gotimer_executor/common/conf"
@@ -39,11 +40,13 @@ func NewWorker(timerDAO *timerdao.TimerDAO, taskDAO *taskdao.TaskDAO, taskCache 
 }
 
 func (w *Worker) Start(ctx context.Context) error {
+	fmt.Println("迁移start")
 	conf := w.appConfigProvider.Get()
 	ticker := time.NewTicker(time.Duration(conf.MigrateStepMinutes) * time.Minute)
 	defer ticker.Stop()
 
 	for range ticker.C {
+		fmt.Println("迁移ticker")
 		log.InfoContext(ctx, "migrator ticking...")
 		select {
 		case <-ctx.Done():
@@ -57,8 +60,8 @@ func (w *Worker) Start(ctx context.Context) error {
 			continue
 		}
 
-		if err := w.migrate(ctx); err != nil {
-			log.ErrorContext(ctx, "migrate failed, err: %v", err)
+		if err := w.Migrate(ctx); err != nil {
+			log.ErrorContext(ctx, "Migrate failed, err: %v", err)
 			continue
 		}
 
@@ -67,7 +70,7 @@ func (w *Worker) Start(ctx context.Context) error {
 	return nil
 }
 
-func (w *Worker) migrate(ctx context.Context) error {
+func (w *Worker) Migrate(ctx context.Context) error {
 	timers, err := w.timerDAO.GetTimers(ctx, timerdao.WithStatus(int32(consts.Enabled.ToInt())))
 	if err != nil {
 		return err
@@ -94,6 +97,38 @@ func (w *Worker) migrate(ctx context.Context) error {
 	return w.migrateToCache(ctx, start, end)
 }
 
+func (w *Worker) MigrateNow(ctx context.Context) error {
+	fmt.Println("MigrateNow 初始化")
+	timers, err := w.timerDAO.GetTimers(ctx, timerdao.WithStatus(int32(consts.Enabled.ToInt())))
+	if err != nil {
+		return err
+	}
+
+	conf := w.appConfigProvider.Get()
+	now := time.Now()
+	start := now
+	end := utils.GetStartHour(now.Add(2 * time.Duration(conf.MigrateStepMinutes) * time.Minute))
+	fmt.Println("start time = ", start)
+	fmt.Println("end time = ", end)
+	// 迁移可以慢慢来，不着急
+	for _, timer := range timers {
+		nexts, _ := w.cronParser.NextsBetween(timer.Cron, start, end)
+		fmt.Println("nexts = ", nexts)
+		if err := w.timerDAO.BatchCreateRecords(ctx, timer.BatchTasksFromTimer(nexts)); err != nil {
+			log.ErrorContextf(ctx, "migrator batch create records for timer: %d failed, err: %v", timer.ID, err)
+		}
+		time.Sleep(5 * time.Second)
+	}
+
+	// if err := w.batchCreateBucket(ctx, start, end); err != nil {
+	// 	log.ErrorContextf(ctx, "batch create bucket failed, start: %v", start)
+	// 	return err
+	// }
+
+	// log.InfoContext(ctx, "migrator batch create db tasks susccess")
+	return w.migrateToCache(ctx, start, end)
+}
+
 // func (w *Worker) batchCreateBucket(ctx context.Context, start, end time.Time) error {
 // 	cntByMins, err := w.taskDAO.CountGroupByMinute(ctx, start.Format(consts.SecondFormat), end.Format(consts.SecondFormat))
 // 	if err != nil {
@@ -105,6 +140,7 @@ func (w *Worker) migrate(ctx context.Context) error {
 
 func (w *Worker) migrateToCache(ctx context.Context, start, end time.Time) error {
 	// 迁移完成后，将所有添加的 task 取出，添加到 redis 当中
+	fmt.Println("migrateToCache")
 	tasks, err := w.taskDAO.GetTasks(ctx, taskdao.WithStartTime(start), taskdao.WithEndTime(end))
 	if err != nil {
 		log.ErrorContextf(ctx, "migrator batch get tasks failed, err: %v", err)

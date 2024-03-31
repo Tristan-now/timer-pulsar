@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"github.com/apache/pulsar-client-go/pulsar"
-	"log"
 	"sync"
 	"time"
 )
@@ -21,36 +20,49 @@ func main() {
 		ConnectionTimeout: 30 * time.Second,
 	})
 
-	consumer := make([]pulsar.Consumer, 110)
+	//consumer := make([]pulsar.Consumer, 110)
+	//
+	//for i := 0; i < 10; i++ {
+	//	consumer[i], _ = client.Subscribe(pulsar.ConsumerOptions{
+	//		Topic:            "scheduler-topic",
+	//		SubscriptionName: "my-sub",
+	//		Type:             pulsar.Shared,
+	//	})
+	//
+	//}
+	//
+	//for i := 0; i < 10; i++ {
+	//	go func() {
+	//		for {
+	//			// may block here
+	//			msg, err := consumer[i].Receive(context.Background())
+	//			if err != nil {
+	//				log.Fatal(err)
+	//			}
+	//
+	//			fmt.Printf("Consumer%d Received  '%s'\n", i,
+	//				string(msg.Payload()))
+	//
+	//			consumer[i].Ack(msg)
+	//		}
+	//	}()
+	//}
+	//for i := 0; i < 10; i++ {
+	//
+	//	defer consumer[i].Close()
+	//}
 
-	for i := 0; i < 10; i++ {
-		consumer[i], _ = client.Subscribe(pulsar.ConsumerOptions{
-			Topic:            "scheduler-topic",
-			SubscriptionName: "my-sub",
-			Type:             pulsar.Shared,
-		})
+	consumer, _ := client.Subscribe(pulsar.ConsumerOptions{
+		Topic:            "scheduler-topic",
+		SubscriptionName: "my-sub",
+		Type:             pulsar.Shared,
+	})
 
+	for {
+		msg, _ := consumer.Receive(context.Background())
+		fmt.Println(string(msg.Payload()))
+		consumer.Ack(msg)
 	}
 
-	for i := 0; i < 10; i++ {
-		go func() {
-			for {
-				// may block here
-				msg, err := consumer[i].Receive(context.Background())
-				if err != nil {
-					log.Fatal(err)
-				}
-
-				fmt.Printf("Consumer%d Received  '%s'\n", i,
-					string(msg.Payload()))
-
-				consumer[i].Ack(msg)
-			}
-		}()
-	}
-	for i := 0; i < 10; i++ {
-
-		defer consumer[i].Close()
-	}
 	wg.Wait()
 }

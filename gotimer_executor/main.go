@@ -124,7 +124,10 @@ func main() {
 	migrateWoker := mg.NewWorker(timerDao, taskDao, tashCache, redisCLient, cronPr, defaultMigratorConf)
 
 	go func() {
+		fmt.Println("开始迁移")
+		migrateWoker.MigrateNow(context.Background())
 		migrateWoker.Start(context.Background())
+		fmt.Println("迁移执行成功")
 	}()
 
 	executorWorker := executor.NewWorker(timerService, taskDao, jsonClient, filter, rep)

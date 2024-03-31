@@ -31,3 +31,14 @@
 2024-03-27T20:55:18.882+0800	WARN	executor/worker.go:70	bloom filter check failed, start to check db, bloom key: task_bloom_2024-03-27, timerIDUnixKey: 4_1711539540000, err: <nil>, exist: true
 2024-03-27T20:55:18.883+0800	WARN	executor/worker.go:75	task is already executed, timerID: 4, exec_time: 2024-03-27 11:39:00 +0000 UTC
 2024-03-27T20:56:00.012+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 4
+2024-03-31T17:25:17.395+0800	ERROR	migrator/worker.go:86	migrator batch create records for timer: 3 failed, err: Error 1062 (23000): Duplicate entry '3-2024-03-31 10:10:00' for key 'task.idx_def_timer'
+2024-03-31T17:27:01.456+0800	ERROR	migrator/worker.go:86	migrator batch create records for timer: 3 failed, err: Error 1062 (23000): Duplicate entry '3-2024-03-31 10:10:00' for key 'task.idx_def_timer'
+2024-03-31T17:27:06.463+0800	ERROR	migrator/worker.go:86	migrator batch create records for timer: 4 failed, err: Error 1062 (23000): Duplicate entry '4-2024-03-31 10:01:00' for key 'task.idx_def_timer'
+2024-03-31T17:27:11.477+0800	ERROR	migrator/worker.go:86	migrator batch create records for timer: 6 failed, err: Error 1062 (23000): Duplicate entry '6-2024-03-31 10:30:00' for key 'task.idx_def_timer'
+2024-03-31T19:43:23.461+0800	ERROR	migrator/worker.go:115	migrator batch create records for timer: 3 failed, err: Error 1062 (23000): Duplicate entry '3-2024-03-31 11:50:00' for key 'task.idx_def_timer'
+2024-03-31T19:43:28.477+0800	ERROR	migrator/worker.go:115	migrator batch create records for timer: 4 failed, err: Error 1062 (23000): Duplicate entry '4-2024-03-31 11:44:00' for key 'task.idx_def_timer'
+2024-03-31T19:43:33.488+0800	ERROR	migrator/worker.go:115	migrator batch create records for timer: 6 failed, err: Error 1062 (23000): Duplicate entry '6-2024-03-31 12:00:00' for key 'task.idx_def_timer'
+2024-03-31T19:47:07.879+0800	ERROR	migrator/worker.go:118	migrator batch create records for timer: 3 failed, err: Error 1062 (23000): Duplicate entry '3-2024-03-31 11:50:00' for key 'task.idx_def_timer'
+2024-03-31T19:47:12.894+0800	ERROR	migrator/worker.go:118	migrator batch create records for timer: 4 failed, err: Error 1062 (23000): Duplicate entry '4-2024-03-31 11:48:00' for key 'task.idx_def_timer'
+2024-03-31T19:49:02.318+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 4
+2024-03-31T19:50:00.015+0800	WARN	executor/timer.go:114	get timer from local cache failed, timerID: 4

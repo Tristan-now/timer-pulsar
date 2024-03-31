@@ -137,7 +137,7 @@ func (w *Worker) handleBatch(ctx context.Context, key string, start, end time.Ti
 	}
 
 	tasks, err := w.task.GetTasksByTime(ctx, key, bucket, start, end)
-	fmt.Println("在起始时间 ", start, " 截至时间 ", end, " ,得到task", tasks)
+	//fmt.Println("在起始时间 ", start, " 截至时间 ", end, " ,得到task", tasks)
 	// 对于两分钟一次的任务，只会在分钟起始第0s,解析到任务
 	if err != nil {
 		return err
